@@ -25,13 +25,19 @@ get '/trips.json' do
 	{:routes => routes}.to_json
 end
 
+get '/trips.xml' do
+	content_type 'text/xml'
+	#builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
+	#	xml.send()
+	#end
+	#{:routes => routes}.to_xml
+end
+
+
 def routes
 	begin		
 		page = Nokogiri::HTML(open("http://www.costasultransportes.com.br/?p=horarios/index", :read_timeout => 10))
-		#puts "Did you find something? #{page.errors.empty?}"
-		#puts "Did you find something? #{page.errors.first}"
-		#puts "Did you find something? #{page}"
-		
+		#puts "Did you find something? #{page.errors.empty?}"		
  		if page.css("option")
  			trips = Array.new
 	 		results = {}
@@ -41,10 +47,9 @@ def routes
 				end
 			}
 			if !results.empty?
-				#puts "enter 2"
 				results.each{ |id,content|
-					page = Nokogiri::HTML(open("http://www.costasultransportes.com.br/horarios/visualiza.php?local=#{id}", :read_timeout => 1000))
-				#	puts page
+					page = Nokogiri::HTML(open("http://www.costasultransportes.com.br/horarios/visualiza.php?local=#{id}", :read_timeout => 10))
+
 					if page.css("a")
 						puts page.css("a")
 						page.search('a').each{ |hour|
