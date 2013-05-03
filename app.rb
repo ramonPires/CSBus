@@ -20,6 +20,10 @@ require 'net/http'
 
  end
 
+get '/' do
+	erb :index
+end
+
 get '/trips.json' do
 	content_type :json
 	{:routes => routes}.to_json
@@ -58,12 +62,7 @@ def routes
 							trip.id = id.gsub(" ","")							
 							#if content.match('^-').("-")
 								places = content.split(/\u002D/)
-								trip.route_from = places[0].strip
-								if id == "8"
-									#puts content
-									puts places[0]
-									puts places[1]
-								end
+								trip.route_from = places[0].strip								
 								trip.route_to = places[1].to_s.strip!					
 							#end			
 							
