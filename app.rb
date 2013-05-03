@@ -51,13 +51,22 @@ def routes
 					page = Nokogiri::HTML(open("http://www.costasultransportes.com.br/horarios/visualiza.php?local=#{id}", :read_timeout => 10))
 
 					if page.css("a")
-						puts page.css("a")
+						#puts page.css("a")
+						#puts "Cachoeiro de Itapemirim- Córrego dos Monos".split("-")
 						page.search('a').each{ |hour|
-							places = content.split('-')
 							trip = Trip.new
-							trip.id = id.gsub(" ","")			
-							trip.route_from = places[0].to_s.strip!
-							trip.route_to = places[1].to_s.strip!
+							trip.id = id.gsub(" ","")							
+							#if content.match('^-').("-")
+								places = content.split(/\u002D/)
+								trip.route_from = places[0].strip
+								if id == "8"
+									#puts content
+									puts places[0]
+									puts places[1]
+								end
+								trip.route_to = places[1].to_s.strip!					
+							#end			
+							
 							trip.hour = hour.search('strong').text.to_s.gsub(" ","")				
 							trip.week_day  = hour.xpath('text()').text.gsub(/\u00a0/, '').strip
 							trips << trip.to_hash
