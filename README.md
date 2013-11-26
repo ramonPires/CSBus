@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ramonPires/CSBus.png?branch=master)](https://travis-ci.org/ramonPires/CSBus)
+
 CSBus(Nome temporário)
 =====
 Esse projeto foi criado pelo fato de que o site de empresa Costa Sul ,responsável pelo transporte inter-municipal em alguns municípios do sul do Espirito Santo,não fornecia uma api que permitisse acessar informações como horários e rotas dos ônibus,
