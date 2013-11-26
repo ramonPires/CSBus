@@ -39,8 +39,10 @@ class Search
 		results = cities_id		
 		if !results.empty?
 			results.each { |id,content|
-				puts "#{id} - #{content}"
-				puts "#{@url_ids}#{id}"
+=begin
+			puts "#{id} - #{content}"
+			puts "#{@url_ids}#{id}"
+=end								
 				page = search("#{@url_ids}#{id}" )
 				if page.css("a")					
 						page.search('a').each{ |hour|
