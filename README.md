@@ -5,5 +5,4 @@ e optei pelo framework Sinatra devido a simplicidade de lidar com com a arquitet
 
 *URLs* disponiveis:<br/>
 GET **/trips.json** : retorna a listagem com todas a informações no formato json.<br/>
-GET **/trips.xml** : retorna a listagem com todas a informações no formato xml.<br/>
 Esse é o link do [serviço ](http://csbus.herokuapp.com/) no heroku.
