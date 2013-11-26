@@ -3,8 +3,7 @@
 require "json"
 require "./lib/helpers"
 require "./lib/route"
-#require "open-uri"
-#require "nokogiri"
+
 class Search
 	include Helpers
 	def initialize(timeout = 10)
@@ -57,7 +56,6 @@ class Search
 						}						
 				end				
 			}
-			#@routes.sort_by{|route| route[:id]}
 		end
 		@routes
 	end
