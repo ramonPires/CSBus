@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-describe "Sinatra App" do
+describe "CSBus App" do
 
-  it "should respond to GET" do
+	
+  it "should respond with success when access \"/\" " do
     get '/'
         last_response.status.should be(200)
   end
